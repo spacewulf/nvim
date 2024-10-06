@@ -1,10 +1,10 @@
-return {
-
-	{ 
+local plugins = {
+	{
 		"vim-airline/vim-airline",
 		dependencies = {
 			"vim-airline/vim-airline-themes",
 		}
 	}
-
 }
+
+-- return plugins

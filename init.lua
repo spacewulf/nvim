@@ -28,9 +28,9 @@ set.number = true
 set.relativenumber = true
 set.shiftwidth = 4
 
-vim.cmd([[
-	let g:airline_theme = 'catppuccin'
-]])
+-- vim.cmd([[
+-- 	let g:airline_theme = 'catppuccin'
+-- ]])
 
 vim.opt.mouse = 'a'
 
