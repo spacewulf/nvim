@@ -1,4 +1,3 @@
- - Feline
 -- https://github.com/EdenEast/nightfox.nvim/blob/main/mics/feline.lua
 --
 -- This file is a complete example of creating the feline configuration shown in the readme of

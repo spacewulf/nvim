@@ -10,6 +10,7 @@ return {
     "rafamadriz/friendly-snippets",
     "onsails/lspkind.nvim",
   },
+  enabled = true,
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")

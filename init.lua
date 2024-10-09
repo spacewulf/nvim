@@ -17,8 +17,5 @@ o.title = true
 o.termguicolors = true
 
 
-
-
-
 require("config.lazy")
-require("lua.maps")
+require("maps")

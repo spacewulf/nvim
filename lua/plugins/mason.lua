@@ -5,8 +5,10 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
-    require("mason").setup()
+    require("config.mason")
 
+    --[[
+    require("mason").setup()    
     require("mason-lspconfig").setup({
       automatic_installation = true,
       ensure_installed = {
@@ -33,5 +35,6 @@ return {
         "eslint_d",
       },
     })
+    ]]
   end,
 }
