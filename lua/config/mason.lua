@@ -26,3 +26,23 @@ require("mason-tool-installer").setup({
     "eslint_d",
   },
 })
+
+require("mason-nvim-dap").setup({
+  ensure_installed = { 'codelldb', 'python' },
+  handlers = {
+    function(config)
+      require("mason-nvim-dap").default_setup(config)
+    end,
+    python = function(config)
+      config.adapters = {
+        type = "executable",
+        command = "python3",
+        args = {
+          "-m",
+          "debugpy.adapter",
+        },
+      }
+      require('mason-nvim-dap').default_setup(config)
+    end,
+  }
+})
