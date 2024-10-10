@@ -6,6 +6,7 @@ end
 
 -- Save
 map("n", "<leader>w", "<CMD>update<CR>")
+map("n", "<leader>wq", "<CMD>wq<CR>")
 
 -- Quit
 map("n", "<leader>q", "<CMD>q<CR>")

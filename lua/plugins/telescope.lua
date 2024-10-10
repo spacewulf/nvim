@@ -6,8 +6,8 @@ return {
     'jonarrien/telescope-cmdline.nvim',
   },
   keys = {
-    { ":", '<CMD>Telescope cmdline<CR>', desc = 'Cmdline' },
-    { "<leader><leader>", '<CMD>Telescope cmdline<CR>', { noremap = true, desc = 'Cmdline' } }
+    { ':', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' },
+    { '<leader><leader>', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' }
   },
   config = function()
     require("config.telescope")
