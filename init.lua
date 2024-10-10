@@ -15,7 +15,7 @@ o.encoding = "UTF-8"
 o.ruler = true
 o.title = true
 o.termguicolors = true
-
+o.hidden = true
 
 require("config.lazy")
 require("maps")
