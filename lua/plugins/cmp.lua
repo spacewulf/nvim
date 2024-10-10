@@ -4,18 +4,24 @@ return {
   dependencies = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
-    {
-      "L3MON4D3/LuaSnip",
-    },
+    'hrsh7th/cmp-cmdline',
+    "L3MON4D3/LuaSnip",
     "rafamadriz/friendly-snippets",
     "onsails/lspkind.nvim",
+    'saadparwaiz1/cmp_luasnip',
+    'hrsh7th/cmp-nvim-lsp',
+  },
+  opts = {
+    performance = {
+      debounce = 0,
+      throttle = 0,
+    },
   },
   enabled = true,
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
     local luasnip = require("luasnip")
-    
     require("luasnip.loaders.from_vscode").lazy_load()
 
     cmp.setup({

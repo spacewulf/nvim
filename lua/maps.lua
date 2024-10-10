@@ -36,3 +36,7 @@ map("n", "<C-Down>", "<C-w>-")
 
 -- Text Handling
 map("n", "<leader>ss", "i<CR><ESC>")
+
+-- Lazy
+map("n", "<leader>ll", "<CMD>Lazy<CR>")
+map("n", "<leader>llu", "<CMD>Lazy update<CR>")

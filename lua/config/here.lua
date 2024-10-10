@@ -2,7 +2,7 @@ require("here-term").setup({
   startup_command = "enew",
 
   mappings = {
-    toggle = "<C-;>",
+    toggle = "<leader>tt",
     kill = "<C-S-;>",
   },
 
