@@ -1,10 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-  },
   config = function()
-    --  require("config.lspconfig")
+      require("config.lspconfig")
   end,
 }
