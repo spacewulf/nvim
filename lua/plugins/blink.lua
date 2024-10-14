@@ -9,6 +9,5 @@ return {
       },
       nerd_font_variant = 'normal',
     },
-    enabled = false,
-  }
+  },
 }

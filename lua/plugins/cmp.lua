@@ -17,7 +17,7 @@ return {
       throttle = 0,
     },
   },
-  enabled = true,
+  enabled = false,
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
@@ -52,5 +52,5 @@ return {
     set completeopt=menuone,noinsert,noselect
     highlight! default link CmpItemKind CmpItemMenuDefault
     ]])
-    end,
+  end,
 }

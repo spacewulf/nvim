@@ -15,12 +15,12 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 mason_lspconfig.setup_handlers {
-  function (server_name)
+  function(server_name)
     require("lspconfig")[server_name].setup {
-      capabilities = capabilities,
+--      capabilities = capabilities,
       on_attach = on_attach,
     }
   end,
