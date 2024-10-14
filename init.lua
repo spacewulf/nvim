@@ -17,5 +17,26 @@ o.title = true
 o.termguicolors = true
 o.hidden = true
 
+-- Minimum number of lines to keep on screen above and below the cursor
+o.scrolloff = 10
+
+-- See how neovim will display certian whitespace characters in the editor
+o.list = true
+o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+o.clipboard = 'unnamedplus'
+
+-- Sync clipboard with OS and load after UiEnter because it can increase startup-speed
+vim.schedule(function()
+  o.clipboard = 'unnamedplus'
+end)
+
+-- Hide mode since it's already shown on the statusline
+o.showmode = false
+
+-- Case-insensitive searching unless \C or one or more capital letters is in the search term
+o.ignorecase = true
+o.smartcase = true
+
 require("config.lazy")
 require("maps")

@@ -2,8 +2,8 @@ require("here-term").setup({
   startup_command = "enew",
 
   mappings = {
-    toggle = "<leader>tt",
-    kill = "<C-S-;>",
+    --    toggle = "<leader>tt",
+    --    kill = "<C-S-;>",
   },
 
   extra_mappings = {
