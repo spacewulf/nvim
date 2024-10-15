@@ -11,7 +11,7 @@ conform.setup({
     json = { "prettier" },
     yaml = { "prettier" },
     markdown = { "prettier" },
-    lua = { "prettier" },
+    lua = { "stylua" },
     python = { "prettier" },
   },
   format_on_save = {
