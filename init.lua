@@ -1,6 +1,10 @@
 local global = vim.g
 local o = vim.opt
 
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
 global.loaded_netrw = 1
 global.loaded_netrwPlugin = 1
 
@@ -22,13 +26,13 @@ o.scrolloff = 10
 
 -- See how neovim will display certian whitespace characters in the editor
 o.list = true
-o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- o.clipboard = 'unnamedplus'
 
 -- Sync clipboard with OS and load after UiEnter because it can increase startup-speed
 vim.schedule(function()
-  o.clipboard = 'unnamedplus'
+  o.clipboard = "unnamedplus"
 end)
 
 -- Hide mode since it's already shown on the statusline
