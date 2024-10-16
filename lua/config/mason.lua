@@ -6,6 +6,43 @@ local mason_nvim_dap = require("mason-nvim-dap")
 
 local protocol = require("vim.lsp.protocol")
 
+
+local M = {}
+local map = vim.keymap.set
+
+M.on_attach = function(_, bufnr)
+  local function opts(desc)
+    return { buffer = bufnr, desc = "LSP " .. desc }
+  end
+end
+
+
+M.on_init = function(client, _)
+  if client.supports_method "textDocument/semanticTokens" then
+    client.server_capabilities.semanticTokensProvider = nil
+  end
+end
+
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+
+M.capabilities.textDocument.completion.completionItem = {
+  documentationFormat = { "markdown", "plaintext" },
+  snippetSupport = true,
+  preselectSupport = true,
+  insertReplaceSupport = true,
+  labelDetailsSupport = true,
+  deprecatedSupport = true,
+  commitCharactersSupport = true,
+  tagSupport = { valueSet = { 1 } },
+  resolveSupport = {
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+    },
+  },
+}
+
 mason.setup()
 
 mason_lspconfig.setup({
@@ -23,7 +60,6 @@ mason_lspconfig.setup({
     "rust_analyzer",
   }
 })
-
 mason_tool_installer.setup({
   ensure_installed = {
     "prettier",
@@ -68,16 +104,14 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 mason_lspconfig.setup_handlers({
   function(server_name)
     require("lspconfig")[server_name].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
+      capabilities = M.capabilities,
+      on_attach = M.on_attach,
     })
   end,
 })
 
 -- Keymaps
-vim.keymap.set("n", "<leader>rr", vim.lsp.buf.rename)
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename using the current LSP" })
