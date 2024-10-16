@@ -59,7 +59,7 @@ local plugins = {
 		"stevearc/conform.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			require("config.formatter")
+      require 'config.conform'
 		end,
 	},
 
@@ -77,20 +77,52 @@ local plugins = {
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			"mfussenegger/nvim-dap",
-			"jay-babu/mason-nvim-dap.nvim",
-			"nvim-neotest/nvim-nio",
-			"rcarriga/nvim-dap-ui",
-      {
-        "neovim/nvim-lspconfig", -- Config for lspconfig is also in the mason.lua config file
-        event = { "BufReadPre", "BufNewFile", "User FilePost" },
-      },
 		},
 		config = function()
 			require("config.mason")
 		end,
 	},
 
+
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+      "jay-babu/mason-nvim-dap.nvim",
+    },
+    config = function()
+      require 'config.dap'
+    end,
+  },
+
+  {
+    "folke/lazydev.nvim",
+    opts = {
+      library = {
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+
+  { "Bilal2453/luvit-meta", lazy = true },
+
+  {
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile", "User FilePost" },
+    dependencies = { "neovim/nvim-lspconfig" },
+    config = function()
+      require 'config.lspconfig'
+    end,
+  },
+
+  {
+    "williamboman/mason-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+    }
+  },
+  
   --[[
 	{
 		"neovim/nvim-lspconfig",
