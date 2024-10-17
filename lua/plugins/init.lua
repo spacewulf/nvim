@@ -3,10 +3,10 @@ local plugins = {
 		"nvim-tree/nvim-web-devicons",
 	},
 
-  {
-    "echasnovski/mini.nvim",
-    version = "*",
-  },
+	{
+		"echasnovski/mini.nvim",
+		version = "*",
+	},
 
 	{
 		"nvim-lualine/lualine.nvim",
@@ -15,9 +15,11 @@ local plugins = {
 
 	{
 		"folke/noice.nvim",
+		event = "VeryLazy",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
+			"nvim-telescope/telescope.nvim",
 		},
 		config = function()
 			require("config.noice")
@@ -59,7 +61,7 @@ local plugins = {
 		"stevearc/conform.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-      require 'config.conform'
+			require("config.conform")
 		end,
 	},
 
@@ -83,47 +85,46 @@ local plugins = {
 		end,
 	},
 
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+			"nvim-neotest/nvim-nio",
+			"jay-babu/mason-nvim-dap.nvim",
+		},
+		config = function()
+			require("config.dap")
+		end,
+	},
 
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "nvim-neotest/nvim-nio",
-      "jay-babu/mason-nvim-dap.nvim",
-    },
-    config = function()
-      require 'config.dap'
-    end,
-  },
+	{
+		"folke/lazydev.nvim",
+		opts = {
+			library = {
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+			},
+		},
+	},
 
-  {
-    "folke/lazydev.nvim",
-    opts = {
-      library = {
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
-      },
-    },
-  },
+	{ "Bilal2453/luvit-meta", lazy = true },
 
-  { "Bilal2453/luvit-meta", lazy = true },
+	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile", "User FilePost" },
+		dependencies = { "neovim/nvim-lspconfig" },
+		config = function()
+			require("config.lspconfig")
+		end,
+	},
 
-  {
-    "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile", "User FilePost" },
-    dependencies = { "neovim/nvim-lspconfig" },
-    config = function()
-      require 'config.lspconfig'
-    end,
-  },
+	{
+		"williamboman/mason-lspconfig",
+		dependencies = {
+			"williamboman/mason.nvim",
+		},
+	},
 
-  {
-    "williamboman/mason-lspconfig",
-    dependencies = {
-      "williamboman/mason.nvim",
-    }
-  },
-  
-  --[[
+	--[[
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile", "User FilePost" },
@@ -154,26 +155,13 @@ local plugins = {
       },
       ]]
 			{
-				"windwp/nvim-autopairs",
-				opts = {
-					fast_wrap = {},
-					disable_filetype = { "TelescopePrompt", "vim" },
-				},
-				config = function(_, opts)
-					require("nvim-autopairs").setup(opts)
-
-					local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-					require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
-				end,
-			},
-			{
 				"saadparwaiz1/cmp_luasnip",
 				"hrsh7th/cmp-nvim-lua",
 				"hrsh7th/cmp-nvim-lsp",
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-path",
 				"hrsh7th/cmp-cmdline",
-		    "onsails/lspkind.nvim",
+				"onsails/lspkind.nvim",
 			},
 		},
 		opts = {
@@ -186,13 +174,14 @@ local plugins = {
 			require("config.cmp")
 		end,
 	},
-	
-  {
+
+	{
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		config = function()
 			require("lsp_lines").setup()
 		end,
 		dependencies = { "neovim/nvim-lspconfig" },
+		enabled = false,
 	},
 
 	{
@@ -200,13 +189,20 @@ local plugins = {
 		dependencies = {
 			{
 				"nvim-lua/plenary.nvim",
-				"jonarrien/telescope-cmdline.nvim",
+				-- jonarrien/telescope-cmdline.nvim",
 				"junegunn/gv.vim",
 				"junegunn/fzf.vim",
 			},
 		},
 		config = function()
 			require("config.telescope")
+		end,
+	},
+
+	{
+		"cohama/lexima.vim",
+		config = function()
+			require("config.lexima")
 		end,
 	},
 
@@ -266,6 +262,9 @@ local plugins = {
 	{
 		"jake-stewart/multicursor.nvim",
 		branch = "1.0",
+		config = function()
+			require("config.multiline")
+		end,
 	},
 
 	{

@@ -2,7 +2,7 @@ local global = vim.g
 local o = vim.opt
 
 vim.diagnostic.config({
-  virtual_text = false,
+	virtual_text = false,
 })
 
 global.loaded_netrw = 1
@@ -19,7 +19,7 @@ o.encoding = "UTF-8"
 o.ruler = true
 o.title = true
 o.termguicolors = true
-o.hidden = true
+o.hidden = false
 
 -- Minimum number of lines to keep on screen above and below the cursor
 o.scrolloff = 10
@@ -32,7 +32,7 @@ o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Sync clipboard with OS and load after UiEnter because it can increase startup-speed
 vim.schedule(function()
-  o.clipboard = "unnamedplus"
+	o.clipboard = "unnamedplus"
 end)
 
 -- Hide mode since it's already shown on the statusline
