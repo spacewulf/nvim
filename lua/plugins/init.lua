@@ -9,8 +9,18 @@ local plugins = {
 	},
 
 	{
+		"freddiehaddad/feline.nvim",
+		opts = {},
+		config = function()
+			require("config.feline.feline")
+		end,
+		enabled = false,
+	},
+
+	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		enabled = true,
 	},
 
 	{
@@ -115,6 +125,10 @@ local plugins = {
 		config = function()
 			require("config.lspconfig")
 		end,
+	},
+
+	{
+		"nvim-lua/lsp-status.nvim",
 	},
 
 	{
