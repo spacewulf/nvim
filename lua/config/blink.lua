@@ -1,5 +1,4 @@
 require("blink.cmp").setup({
-	keymap = {},
 	sources = {
 		prividers = {
 			{ "blink.cmp.sources.lsp", name = "LSP" },
@@ -16,14 +15,14 @@ require("blink.cmp").setup({
 			min_width = 15,
 			max_width = 50,
 			max_height = 15,
-			border = vim.g.borderStyle,
+			border = "rounded",
 			auto_show = true,
 			auto_show_delay_ms = 200,
 		},
 		autocomplete = {
 			min_width = 10,
 			max_height = 10,
-			border = vim.g.borderStyle,
+			border = "rounded",
 			-- selection = "auto_insert", -- PENDING https://github.com/Saghen/blink.cmp/issues/117
 			selection = "preselect",
 			cycle = { from_top = false }, -- cycle at bottom, but not at the top
@@ -41,7 +40,7 @@ require("blink.cmp").setup({
 				end
 
 				-- FIX highlight for Tokyonight
-				local iconHl = vim.g.colors_name:find("tokyonight") and "BlinkCmpKind" or "BlinkCmpKind" .. ctx.kind
+				local iconHl = vim.g.colors_name:find("carbonfox") and "BlinkCmpKind" or "BlinkCmpKind" .. ctx.kind
 
 				return {
 					{

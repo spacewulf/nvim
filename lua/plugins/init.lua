@@ -9,15 +9,6 @@ local plugins = {
 	},
 
 	{
-		"freddiehaddad/feline.nvim",
-		opts = {},
-		config = function()
-			require("config.feline.feline")
-		end,
-		enabled = false,
-	},
-
-	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		enabled = true,
@@ -202,6 +193,14 @@ local plugins = {
 		},
 		config = function()
 			require("config.telescope")
+		end,
+	},
+
+	{
+		"numToStr/Comment.nvim",
+		opts = {},
+		config = function()
+			require("config.comment")
 		end,
 	},
 

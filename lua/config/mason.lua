@@ -12,8 +12,6 @@ require("mason-tool-installer").setup({
 	ensure_installed = {
 		"prettier",
 		"stylua",
-		"isort",
-		"pylint",
 		"html",
 		"jsonls",
 		"pyright",
