@@ -138,16 +138,6 @@ local plugins = {
 		},
 	},
 
-	--[[
-	{
-		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile", "User FilePost" },
-		config = function()
-			require("config.lspconfig")
-		end,
-	},
-  ]]
-
 	{
 		"hrsh7th/nvim-cmp",
 		event = { "InsertEnter" },
@@ -160,14 +150,6 @@ local plugins = {
 					require("config.luasnip")
 				end,
 			},
-			--[[
-      {
-        'cohama/lexima.vim',
-        config = function()
-          require 'config.lexima'
-        end,
-      },
-      ]]
 			{
 				"saadparwaiz1/cmp_luasnip",
 				"hrsh7th/cmp-nvim-lua",
@@ -186,6 +168,16 @@ local plugins = {
 		},
 		config = function()
 			require("config.cmp")
+		end,
+		enabled = false,
+	},
+
+	{
+		"saghen/blink.cmp",
+		event = "BufReadPre",
+		version = "v0.*",
+		config = function()
+			require("config.blink")
 		end,
 	},
 
