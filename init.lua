@@ -28,8 +28,6 @@ o.scrolloff = 10
 o.list = true
 o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
--- o.clipboard = 'unnamedplus'
-
 -- Sync clipboard with OS and load after UiEnter because it can increase startup-speed
 vim.schedule(function()
 	o.clipboard = "unnamedplus"

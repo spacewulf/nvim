@@ -112,7 +112,6 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile", "User FilePost" },
-		dependencies = { "neovim/nvim-lspconfig" },
 		config = function()
 			require("config.lspconfig")
 		end,
@@ -168,7 +167,7 @@ local plugins = {
 		event = "BufReadPre",
 		version = "v0.*",
 		config = function()
-			require("config.blink")
+			require("config.blink-cmp")
 		end,
 	},
 
@@ -268,7 +267,7 @@ local plugins = {
 		"jake-stewart/multicursor.nvim",
 		branch = "1.0",
 		config = function()
-			require("config.multiline")
+			require("config.multicursor")
 		end,
 	},
 
