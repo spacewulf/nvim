@@ -60,7 +60,7 @@ require("blink.cmp").setup({
 		select_prev = { "<S-Tab>", "<Up>" },
 	},
 	kind_icons = {
-		Text = "",
+		Text = "󰊄",
 		Method = "󰊕",
 		Function = "󰊕",
 		Constructor = "",
