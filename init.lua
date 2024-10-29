@@ -5,6 +5,9 @@ vim.diagnostic.config({
 	virtual_text = false,
 })
 
+global.mapleader = " "
+global.maplocalleader = " "
+
 global.loaded_netrw = 1
 global.loaded_netrwPlugin = 1
 global.have_nerd_font = true
