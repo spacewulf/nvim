@@ -5,8 +5,12 @@ vim.diagnostic.config({
 	virtual_text = false,
 })
 
+global.mapleader = " "
+global.maplocalleader = " "
+
 global.loaded_netrw = 1
 global.loaded_netrwPlugin = 1
+global.have_nerd_font = true
 
 o.number = true
 o.relativenumber = true
@@ -20,6 +24,13 @@ o.ruler = true
 o.title = true
 o.termguicolors = true
 o.hidden = false
+
+-- Decrease mapped sequence wait time
+-- Displays which-key popup sooner
+o.timeoutlen = 300
+
+-- Save undo history
+o.undofile = true
 
 -- Minimum number of lines to keep on screen above and below the cursor
 o.scrolloff = 10
