@@ -9,6 +9,7 @@ mason_lspconfig.setup_handlers({
 		require("lspconfig")[server_name].setup({
 			capabilities = capabilities,
 		})
+		capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 	end,
 })
 

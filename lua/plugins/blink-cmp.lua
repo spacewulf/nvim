@@ -1,10 +1,11 @@
 return {
-  {
-    "saghen/blink.cmp",
-    event = "BufReadPre",
-    version = "v0.*",
-    config = function()
-      require("config.blink-cmp")
-    end
-  }
+	{
+		"saghen/blink.cmp",
+		lazy = false,
+		dependencies = "rafamadriz/friendly-snippets",
+		version = "v0.*",
+		config = function()
+			require("config.blink-cmp")
+		end,
+	},
 }

@@ -13,8 +13,6 @@ require("mason-tool-installer").setup({
 		"arduino-language-server",
 		"prettier",
 		"stylua",
-		"html",
-		"jsonls",
 		"pyright",
 		"tailwindcss",
 		"omnisharp",
