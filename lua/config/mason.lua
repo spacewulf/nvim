@@ -14,7 +14,6 @@ require("mason-tool-installer").setup({
 		"prettier",
 		"stylua",
 		"pyright",
-		"tailwindcss",
 		"omnisharp",
 		"bashls",
 		"lua_ls",
