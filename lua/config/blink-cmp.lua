@@ -1,3 +1,4 @@
+--[[
 require("blink.cmp").setup({
 	sources = {
 		prividers = {
@@ -81,3 +82,116 @@ require("blink.cmp").setup({
 		TypeParameter = "󰅲",
 	},
 })
+]]
+
+require("blink.cmp").setup({
+	keymap = { preset = "enter" },
+})
+--[[
+	sources = {
+		completion = {
+			enabled_providers = { "lsp", "path", "snippets", "buffer" },
+		},
+		providers = {
+			lsp = {
+				name = "LSP",
+				module = "blink.cmp.sources.lsp",
+				enabled = true,
+				transform_items = nil,
+				should_show_items = true,
+				max_items = nil,
+				min_keyword_length = 0,
+				fallback_for = {},
+				score_offset = 0,
+				override = nil,
+			},
+			path = {
+				name = "Path",
+				module = "blink.cmp.sources.path",
+				score_offset = 3,
+				opts = {
+					trailing_slash = false,
+					label_trailing_slash = true,
+					get_cwd = function(context)
+						return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
+					end,
+					show_hidden_files_by_default = false,
+				},
+			},
+			snippets = {
+				name = "Snippets",
+				module = "blink.cmp.sources.snippets",
+				score_offset = -3,
+				opts = {
+					friendly_snippets = true,
+					search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+					global_snippets = { "all" },
+					extended_filetypes = {},
+					ignored_filetypes = {},
+					get_filetype = function(context)
+						return vim.bo.filetype
+					end,
+				},
+			},
+			buffer = {
+				name = "Buffer",
+				module = "blink.cmp.sources.buffer",
+				fallback_for = { "lsp" },
+				opts = {
+					get_bufnrs = function()
+						return vim.iter(vim.api.nvim_list_wins())
+							:map(function(win)
+								return vim.api.nvim_win_get_buf(win)
+							end)
+							:filter(function(buf)
+								return vim.bo[buf].buftype ~= "nofile"
+							end)
+							:totable()
+					end,
+				},
+			},
+		},
+	},
+	fuzzy = {
+		use_typo_resistance = true,
+		use_frecency = true,
+		use_proximity = true,
+		max_items = 200,
+		sorts = { "label", "kind", "score" },
+		prebuilt_binaries = {
+			download = true,
+			force_version = nil,
+			force_system_triple = nil,
+		},
+	},
+	appearance = {
+		kind_icons = {
+			Text = "󰊄",
+			Method = "󰊕",
+			Function = "󰊕",
+			Constructor = "",
+			Field = "󰇽",
+			Variable = "󰂡",
+			Class = "⬟",
+			Interface = "",
+			Module = "",
+			Property = "󰜢",
+			Unit = "",
+			Value = "󰎠",
+			Enum = "",
+			Keyword = "󰌋",
+			Snippet = "󰒕",
+			Color = "󰏘",
+			Reference = "",
+			File = "󰉋",
+			Folder = "󰉋",
+			EnumMember = "",
+			Constant = "󰏿",
+			Struct = "",
+			Event = "",
+			Operator = "󰆕",
+			TypeParameter = "󰅲",
+		},
+	},
+})
+]]
