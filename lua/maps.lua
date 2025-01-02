@@ -34,3 +34,7 @@ map("n", "<C-Down>", "<C-w>-", "Resize border down")
 
 -- Text Handling
 map("n", "<leader>ss", "i<CR><ESC>", "Insert linebreak at cursor")
+
+-- Lazy Handling
+
+map("n", "<leader>lu", "<CMD>Lazy update<CR>", "Update lazy plugins")
