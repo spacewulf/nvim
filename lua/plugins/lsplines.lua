@@ -1,11 +1,10 @@
 return {
 	{
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy", -- Or `LspAttach`
+		priority = 1000,
 		config = function()
-			require("lsp_lines").setup()
-			vim.diagnostic.config({ virtual_lines = false }, require("lazy.core.config").ns)
+			require("config.lsplines")
 		end,
-		dependencies = { "neovim/nvim-lspconfig" },
-		enabled = true,
 	},
 }

@@ -8,11 +8,14 @@ require("blink.cmp").setup({
 		["<C-e>"] = { "hide", "fallback" },
 	},
 	completion = {
+		--[[
 		list = {
 			selection = function(ctx)
 				return ctx.mode == "cmdline" and "auto_insert" or "preselect"
 			end,
 		},
+    ]]
+		--
 		keyword = { range = "full" },
 		accept = { auto_brackets = { enabled = false } },
 		menu = {
@@ -29,19 +32,13 @@ require("blink.cmp").setup({
 		ghost_text = { enabled = true },
 	},
 	sources = {
-		default = { "lsp", "path", "snippets", "luasnip", "buffer" },
+		default = { "lsp", "path", "snippets", "buffer" },
 		providers = {
 			lsp = {
 				name = "lsp",
 				enabled = true,
 				module = "blink.cmp.sources.lsp",
 				score_offset = 1000,
-			},
-			luasnip = {
-				name = "luasnip",
-				enabled = true,
-				module = "blink.cmp.sources.luasnip",
-				score_offset = 950,
 			},
 			snippets = {
 				name = "snippets",
@@ -53,7 +50,7 @@ require("blink.cmp").setup({
 				name = "path",
 				enabled = true,
 				module = "blink.cmp.sources.path",
-				fallbacks = { "luasnip", "buffer" },
+				fallbacks = { "buffer" },
 				opts = {
 					trailing_slash = false,
 					label_trailing_slash = true,

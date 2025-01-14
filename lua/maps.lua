@@ -38,3 +38,8 @@ map("n", "<leader>ss", "i<CR><ESC>", "Insert linebreak at cursor")
 -- Lazy Handling
 
 map("n", "<leader>lu", "<CMD>Lazy update<CR>", "Update lazy plugins")
+
+-- Git Handling
+
+map("n", "<leader>ga", "<CMD>Git add .<CR>", "Git add .")
+map("n", "<leader>gc", "<CMD>Git commit<CR>", "Git commit")
