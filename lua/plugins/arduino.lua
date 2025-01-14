@@ -1,9 +1,7 @@
 return {
 	{
 		"stevearc/vim-arduino",
-		config = function()
-			require("config.arduino")
-		end,
+		config = function() end,
 		cmd = {
 			"ArduinoAttach",
 			"ArduinoVerify",
