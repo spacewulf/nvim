@@ -43,3 +43,4 @@ map("n", "<leader>lu", "<CMD>Lazy update<CR>", "Update lazy plugins")
 
 map("n", "<leader>ga", "<CMD>Git add .<CR>", "Git add .")
 map("n", "<leader>gc", "<CMD>Git commit<CR>", "Git commit")
+map("n", "<leader>gp", "<CMD>Git push<CR>", "Git push")
