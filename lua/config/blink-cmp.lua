@@ -69,6 +69,7 @@ require("blink.cmp").setup({
 				min_keyword_length = 4,
 			},
 		},
+		--[[
 		cmdline = function()
 			local type = vim.fn.getcmdtype()
 			if type == "/" or type == "?" then
@@ -79,5 +80,7 @@ require("blink.cmp").setup({
 			end
 			return {}
 		end,
+    ]]
+		--
 	},
 })
