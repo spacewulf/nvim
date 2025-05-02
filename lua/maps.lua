@@ -8,6 +8,7 @@ map("n", "<leader>wq", "<CMD>wq<CR>", "Write current file and quit")
 
 -- Quit
 map("n", "<leader>q", "<CMD>q<CR>", "Quit")
+map("n", "<leader>1q", "<CMD>q!<CR>", "Force Quit")
 
 -- Exit insert mode
 map("i", "jk", "<ESC>", "Exit insert mode")
