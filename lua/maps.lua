@@ -45,3 +45,10 @@ map("n", "<leader>lu", "<CMD>Lazy update<CR>", "Update lazy plugins")
 map("n", "<leader>ga", "<CMD>Git add .<CR>", "Git add .")
 map("n", "<leader>gc", "<CMD>Git commit<CR>", "Git commit")
 map("n", "<leader>gp", "<CMD>Git push<CR>", "Git push")
+
+-- PDF Handling
+-- Navigate to the next page in the PDF
+map("n", "<leader>jj", "<cmd>:lua require('pdfview.renderer').next_page()<CR>", "PDFview: Next Page")
+
+-- Navigate to the previous page in the PDF
+map("n", "<leader>kk", "<cmd>:lua require('pdfview.renderer').previous_page()<CR>", "PDFview: Next Page")
