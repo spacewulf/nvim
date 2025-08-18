@@ -15,7 +15,7 @@ map("i", "jk", "<ESC>", "Exit insert mode")
 
 -- NeoTree
 map("n", "<leader>e", "<CMD>Neotree toggle<CR>", "Toggle Neotree")
-map("n", "<leader>rr", "<CMD>Neotree focus<CR>")
+map("n", "<leader>rf", "<CMD>Neotree focus<CR>")
 
 -- New Windows
 map("n", "<leader>o", "<CMD>vsplit<CR>", "Create vertical split")
@@ -52,3 +52,9 @@ map("n", "<leader>jj", "<cmd>:lua require('pdfview.renderer').next_page()<CR>", 
 
 -- Navigate to the previous page in the PDF
 map("n", "<leader>kk", "<cmd>:lua require('pdfview.renderer').previous_page()<CR>", "PDFview: Next Page")
+
+-- Iron Repl Commands
+map("n", "<leader>rs", "<cmd>IronRepl<cr>", "Iron Repl")
+map("n", "<leader>rr", "<cmd>IronRestart<cr>", "Iron Resetart")
+map("n", "<leader>rF", "<cmd>IronFocus<cr>", "Iron Focus")
+map("n", "<leader>rh", "<cmd>IronHide<cr>", "Iron Hide")
