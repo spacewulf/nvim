@@ -1,7 +1,7 @@
-ts = require("nvim-treesitter")
+TS = require("nvim-treesitter")
 
-ts.setup()
-ts.install({
+TS.setup()
+TS.install({
 	"rust",
 	"javascript",
 	"latex",
