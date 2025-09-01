@@ -5,5 +5,6 @@ return {
 		config = function()
 			require("config.markview")
 		end,
+		enabled = false,
 	},
 }

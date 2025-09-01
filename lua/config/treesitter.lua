@@ -25,6 +25,7 @@ treesitter.setup({
 		"c",
 		"rust",
 		"python",
+		"latex",
 	},
 	incremental_selection = {
 		enable = true,
