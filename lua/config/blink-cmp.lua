@@ -8,6 +8,7 @@ local blink = require("blink.cmp").setup({
 		["<C-e>"] = { "hide", "fallback" },
 	},
 	sources = {
+		default = { "lsp", "path", "snippets", "lazydev", "buffer" },
 		providers = {
 			buffer = {
 				opts = {
@@ -18,17 +19,7 @@ local blink = require("blink.cmp").setup({
 					end,
 				},
 			},
+			lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
 		},
 	},
 })
-
-blink.sources.default = function(ctx)
-	local success, node = pcall(vim.treesitter.get_node)
-	if success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
-		return { "buffer" }
-	elseif vim.bo.filetype == "lua" then
-		return { "lsp", "path" }
-	else
-		return { "lsp", "path", "snippets", "buffer" }
-	end
-end

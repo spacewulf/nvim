@@ -24,6 +24,13 @@ o.ruler = true
 o.title = true
 o.termguicolors = true
 o.hidden = false
+o.confirm = true
+
+-- Enable break indent
+o.breakindent = true
+
+-- Configure how new splits should be opened
+o.splitright = true
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
@@ -43,6 +50,14 @@ o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.schedule(function()
 	o.clipboard = "unnamedplus"
 end)
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.hl.on_yank()
+	end,
+})
 
 -- Hide mode since it's already shown on the statusline
 o.showmode = false
