@@ -2,7 +2,7 @@ return {
 	{
 		"EdenEast/nightfox.nvim",
 		config = function()
-			require("config.colorscheme")
+			require("config.nightfox")
 		end,
 	},
 }
