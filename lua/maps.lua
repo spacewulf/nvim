@@ -13,9 +13,14 @@ map("n", "<leader>1q", "<CMD>q!<CR>", "Force Quit")
 -- Exit insert mode
 map("i", "jk", "<ESC>", "Exit insert mode")
 
--- NeoTree
-map("n", "<leader>e", "<CMD>Neotree toggle<CR>", "Toggle Neotree")
-map("n", "<leader>nf", "<CMD>Neotree focus<CR>")
+-- -- NeoTree
+-- map("n", "<leader>e", "<CMD>Neotree toggle<CR>", "Toggle Neotree")
+-- map("n", "<leader>nf", "<CMD>Neotree focus<CR>")
+
+-- Explorer
+map("n", "<leader>e", function()
+	Snacks.explorer()
+end, "Toggle Explorer")
 
 -- New Windows
 map("n", "<leader>o", "<CMD>vsplit<CR>", "Create vertical split")
