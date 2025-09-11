@@ -18,4 +18,5 @@ TS.install({
 	"gitignore",
 	"c",
 	"python",
+	"regex",
 })

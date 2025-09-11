@@ -18,7 +18,6 @@ require("noice").setup({
 		inc_rename = false, -- enables input dialog for inc-rename.nvim
 		lsp_doc_border = false, -- add a border to hover docs adn signature help
 	},
-	--[[
 	views = {
 		cmdline_popup = {
 			position = {
@@ -48,7 +47,7 @@ require("noice").setup({
 				winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
 			},
 		},
-	}, ]]
+	},
 })
 
 -- Dismiss Noice Message

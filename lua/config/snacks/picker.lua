@@ -5,8 +5,8 @@ return {
 			win = {
 				list = {
 					keys = {
-						["<C-x>"] = "split",
-						["<C-v>"] = "vsplit",
+						["S"] = "split",
+						["s"] = "vsplit",
 					},
 				},
 			},
