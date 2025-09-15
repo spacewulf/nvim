@@ -51,4 +51,4 @@ require("noice").setup({
 })
 
 -- Dismiss Noice Message
-map("n", "<leader>nd", "<CMD>NoiceDismiss<CR>", "Dismiss Noice Message")
+-- map("n", "<leader>nd", "<CMD>NoiceDismiss<CR>", "Dismiss Noice Message")
