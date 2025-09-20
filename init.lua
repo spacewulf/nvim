@@ -1,48 +1,73 @@
-require("config.lazy")
-require("mini.pairs").setup()
-require("mason").setup({
-	PATH = "prepend",
-})
-require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "pylyzer", "bashls", "jsonls" }
+local global = vim.g
+local o = vim.opt
+
+vim.diagnostic.config({
+        virtual_text = false,
 })
 
-require("mason-lspconfig").setup_handlers {
-	function (server_name)
-		require("lspconfig")[server_name].setup {}
-	end,
+global.mapleader = " "
+global.maplocalleader = " "
 
-}
+global.loaded_netrw = 1
+global.loaded_netrwPlugin = 1
+global.have_nerd_font = true
 
-require("dapui").setup()
--- require("lspconfig").lua_ls.setup {}
--- require("lspconfig").pylyzer.setup {}
+o.number = true
+o.relativenumber = true
+o.autoindent = true
+o.cursorline = true
+o.expandtab = true
+o.shiftwidth = 2
+o.tabstop = 2
+o.encoding = "UTF-8"
+o.ruler = true
+o.title = true
+o.termguicolors = true
+o.hidden = false
+o.confirm = true
 
--- vim.wo.number = true
--- vim.wo.relativenumber = true
+-- Enable break indent
+o.breakindent = true
 
-local set = vim.opt
+-- Configure how new splits should be opened
+o.splitright = true
 
-set.tabstop = 4
-set.number = true
-set.relativenumber = true
-set.shiftwidth = 4
+-- Decrease mapped sequence wait time
+-- Displays which-key popup sooner
+o.timeoutlen = 300
 
--- vim.cmd([[
--- 	let g:airline_theme = 'catppuccin'
--- ]])
+-- Save undo history
+o.undofile = true
 
-vim.opt.mouse = 'a'
+-- Minimum number of lines to keep on screen above and below the cursor
+o.scrolloff = 10
 
-vim.opt.showmode = false
+-- See how neovim will display certian whitespace characters in the editor
+o.list = true
+o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
+-- Sync clipboard with OS and load after UiEnter because it can increase startup-speed
 vim.schedule(function()
-	vim.opt.clipboard = 'unnamedplus'
+        o.clipboard = "unnamedplus"
 end)
 
-vim.opt.breakindent = true
+vim.api.nvim_create_autocmd("TextYankPost", {
+        desc = "Highlight when yanking (copying) text",
+        group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+        callback = function()
+                vim.hl.on_yank()
+        end,
+})
 
-vim.opt.undofile = true
+-- Hide mode since it's already shown on the statusline
+o.showmode = false
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+-- Case-insensitive searching unless \C or one or more capital letters is in the search term
+o.ignorecase = true
+o.smartcase = true
+
+
+
+require("config.lazy")
+require("config.maps")
+require('config.colorscheme')

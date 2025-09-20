@@ -1,10 +1,5 @@
-local plugins = {
-	{
-		"EdenEast/nightfox.nvim",
-		config = function()
-			require "config.nightfox"
-		end,
-	}
+return {
+  {
+    "EdenEast/nightfox.nvim",
+  }
 }
-
-return plugins
