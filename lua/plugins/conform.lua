@@ -1,14 +1,27 @@
 return {
-	"stevearc/conform.nvim",
-	opts = {
-		formatters_by_ft = {
-			lua = { "stylua" },
-			python = { "isort", "black" },
-			rust = { "ast-grep" },
+	{
+		"zapling/mason-conform.nvim",
+		dependencies = {
+			{
+				"mason-org/mason.nvim",
+				opts = {},
+			},
+			{
+				"stevearc/conform.nvim",
+				opts = {
+					formatters_by_ft = {
+						lua = { "stylua" },
+						bash = { "shellharden" },
+						yaml = { "yamlfmt" },
+						toml = { "tombi" },
+					},
+					format_on_save = {
+						timeout_ms = 500,
+						lsp_format = "fallback",
+					},
+				},
+			},
 		},
-		format_on_save = {
-			timeout_ms = 500,
-			lsp_format = "fallback",
-		},
+		opts = {},
 	},
 }
