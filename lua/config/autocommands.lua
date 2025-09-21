@@ -1,7 +1,9 @@
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
-		"python",
 		"lua",
+		"bash",
+		"yaml",
+		"toml",
 	},
 	callback = function()
 		vim.treesitter.start()
