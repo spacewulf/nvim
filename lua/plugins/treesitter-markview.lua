@@ -6,4 +6,8 @@ return {
 		branch = "main",
 		build = ":TSUpdate",
 	},
+	{
+		"nvim-treesittern/nvim-treesitter-textobjects",
+		dependencies = { "nvim-treesitter" },
+	},
 }
