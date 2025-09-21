@@ -1,2 +1,2 @@
-vim.cmd("colorscheme terafox")
-require('lualine').setup({})
+vim.cmd("colorscheme caarbonfox")
+require("lualine").setup({})
