@@ -2,7 +2,7 @@ local global = vim.g
 local o = vim.opt
 
 vim.diagnostic.config({
-        virtual_text = false,
+	virtual_text = false,
 })
 
 global.mapleader = " "
@@ -48,16 +48,8 @@ o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Sync clipboard with OS and load after UiEnter because it can increase startup-speed
 vim.schedule(function()
-        o.clipboard = "unnamedplus"
+	o.clipboard = "unnamedplus"
 end)
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-        desc = "Highlight when yanking (copying) text",
-        group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-        callback = function()
-                vim.hl.on_yank()
-        end,
-})
 
 -- Hide mode since it's already shown on the statusline
 o.showmode = false
@@ -66,8 +58,7 @@ o.showmode = false
 o.ignorecase = true
 o.smartcase = true
 
-
-
 require("config.lazy")
 require("config.maps")
-require('config.colorscheme')
+require("config.colorscheme")
+require("config.autocommands")

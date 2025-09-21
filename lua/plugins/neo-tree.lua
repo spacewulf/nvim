@@ -62,6 +62,14 @@ return {
 			-- 			pattern = "Cargo%.toml$",
 			-- 		},
 			-- 	},
+			source_selector = {
+				winbar = false,
+				statusline = true,
+				sources = {
+					{ source = "filesystem" },
+					{ source = "git_status" },
+				},
+			},
 		},
 	},
 	{
