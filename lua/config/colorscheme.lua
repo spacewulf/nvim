@@ -1,2 +1,2 @@
-vim.cmd("colorscheme caarbonfox")
+vim.cmd("colorscheme carbonfox")
 require("lualine").setup({})
