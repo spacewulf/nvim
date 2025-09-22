@@ -13,23 +13,10 @@ vim.keymap.set("n", "<leader>wq", "<CMD>wq<CR>", { desc = "Write and quit" }, op
 
 -- Quit
 vim.keymap.set("n", "<leader>q", "<CMD>q<CR>", { desc = "Quit" }, opts)
-vim.keymap.set("n", "<leader>1q", "<CMD>q!<CR>", { desc = "Force quit" }, opts)
+vim.keymap.set("n", "<C-q><C-q>", "<CMD>q!<CR>", { desc = "Force quit" }, opts)
 
 -- Exit insert mode
 vim.keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode" }, opts)
-
--- NeoTree
-vim.keymap.set("n", "<leader>e", "<CMD>Neotree toggle<CR>", { desc = "Toggle neotree" }, opts)
--- map("n", "<leader>e", "<CMD>Neotree toggle current reveal_force_cwd<CR>", "Toggle Neotree")
-vim.keymap.set("n", "<leader>nf", "<CMD>Neotree focus<CR>", { desc = "Neotree Focus" }, opts)
-vim.keymap.set(
-	"n",
-	"<leader>b",
-	"<CMD>Neotree toggle show buffers right<CR>",
-	{ desc = "Neotree toggle show buffers" },
-	opts
-)
-vim.keymap.set("n", "<leader>s", "<CMD>Neotree float git_status<CR>", { desc = "Neotree float git status" }, opts)
 
 -- New Windows
 vim.keymap.set("n", "<leader>o", "<CMD>vsplit<CR>", { desc = "New Vertical Split" }, opts)
@@ -72,9 +59,6 @@ vim.keymap.set("n", "<leader>lw", "<cmd>set wrap!<CR>", { desc = "Toggle Line Wr
 vim.keymap.set("v", "<", "<gv", { desc = "Visual indent <" }, opts)
 vim.keymap.set("v", ">", ">gv", { desc = "Visual indent >" }, opts)
 
--- LSP
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP Rename" }, opts)
-
 -- Delete current character without copying to register
 vim.keymap.set("n", "x", '"_x', { desc = "Delete current character without copying to register" }, opts)
 
@@ -84,10 +68,5 @@ vim.keymap.set("v", "p", '"_dP', { desc = "Keep last yanked when pasting" }, opt
 -- Diagnostic Keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" }, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" }, opts)
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open diagnostic float" }, opts)
--- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostic set location list" }, opts)
-
--- nnoremap | <CMD>Neotree reveal<cr>
--- nnoremap gd <CMD>Neotree float reveal_file=<cfile> reveal_force_cwd<cr>
--- nnoremap <leader>b <CMD>Neotree toggle show buffers right<cr>
--- nnoremap <leader>s <CMD>Neotree float git_status<cr>
+vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float, { desc = "Open diagnostic float" }, opts)
+vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Diagnostic set location list" }, opts)
