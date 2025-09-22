@@ -1,64 +1,58 @@
-local global = vim.g
-local o = vim.opt
-
 vim.diagnostic.config({
 	virtual_text = false,
 })
 
-global.mapleader = " "
-global.maplocalleader = " "
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.have_nerd_font = true
 
-global.loaded_netrw = 1
-global.loaded_netrwPlugin = 1
-global.have_nerd_font = true
-
-o.number = true
-o.relativenumber = true
-o.autoindent = true
-o.cursorline = true
-o.expandtab = true
-o.shiftwidth = 2
-o.tabstop = 2
-o.encoding = "UTF-8"
-o.ruler = true
-o.title = true
-o.termguicolors = true
-o.hidden = false
-o.confirm = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.autoindent = true
+vim.opt.cursorline = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.encoding = "UTF-8"
+vim.opt.ruler = true
+vim.opt.title = true
+vim.opt.termguicolors = true
+vim.opt.hidden = false
+vim.opt.confirm = true
 
 -- Enable break indent
-o.breakindent = true
+vim.opt.breakindent = true
 
 -- Configure how new splits should be opened
-o.splitright = true
+vim.opt.splitright = true
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-o.timeoutlen = 300
+vim.opt.timeoutlen = 300
 
 -- Save undo history
-o.undofile = true
+vim.opt.undofile = true
 
 -- Minimum number of lines to keep on screen above and below the cursor
-o.scrolloff = 10
+vim.opt.scrolloff = 10
 
 -- See how neovim will display certian whitespace characters in the editor
-o.list = true
-o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Sync clipboard with OS and load after UiEnter because it can increase startup-speed
 vim.schedule(function()
-	o.clipboard = "unnamedplus"
+	vim.opt.clipboard = "unnamedplus"
 end)
 
 -- Hide mode since it's already shown on the statusline
-o.showmode = false
+vim.opt.showmode = false
 
 -- Case-insensitive searching unless \C or one or more capital letters is in the search term
-o.ignorecase = true
-o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
+require("config.keymaps")
 require("config.lazy")
-require("config.maps")
 require("config.colorscheme")
 require("config.autocommands")
