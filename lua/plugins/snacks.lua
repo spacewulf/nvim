@@ -55,7 +55,7 @@ return {
 				desc = "Select Scratch Buffer",
 			},
 			{
-				"<leader>n",
+				"<leader>sh",
 				function()
 					Snacks.notifier.show_history()
 				end,

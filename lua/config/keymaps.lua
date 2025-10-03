@@ -41,8 +41,8 @@ vim.keymap.set("n", "<leader>x", "<CMD>bdelete!<CR>", { desc = "Close buffer" },
 vim.keymap.set("n", "<leader>b", "<cmd> enew <CR>", { desc = "New Buffer" }, opts) -- New buffer
 
 -- Window Management
-vim.keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" }, opts) -- Split window vertically
-vim.keymap.set("n", "<leader>h", "<C-w>s", { desc = "Split window horizontally" }, opts) -- Split window horizontally
+-- vim.keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" }, opts) -- Split window vertically
+-- vim.keymap.set("n", "<leader>h", "<C-w>s", { desc = "Split window horizontally" }, opts) -- Split window horizontally
 vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make Splits Equal" }, opts) -- Make splits equal
 vim.keymap.set("n", "<leader>xs", "<CMD>close<CR>", { desc = "Close current split" }, opts) -- Close current split
 

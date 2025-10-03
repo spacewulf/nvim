@@ -9,6 +9,10 @@ return {
 				vim.lsp.buf.rename,
 				{ desc = "LSP Rename", noremap = true, silent = true }
 			)
+			vim.lsp.enable("nushell")
+			-- vim.lsp.config("nushell", {
+			-- 	cmd = { "nu", "--lsp" },
+			-- })
 		end,
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
@@ -27,6 +31,10 @@ return {
 								},
 							},
 						},
+						nushell = {
+							cmd = { "nu", "--lsp" },
+							filetypes = { "nu" },
+						},
 					}
 					require("mason-lspconfig").setup({
 						ensure_installed = {
@@ -35,14 +43,12 @@ return {
 							"bashls",
 						},
 						automatic_installation = false,
-						handlers = {
-							function(server_name)
-								local server = servers[server_name] or {}
-								server.capabilities =
-									vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-								require("lspconfig")[server_name].setup(server)
-							end,
-						},
+						handlers = function(server_name)
+							local server = servers[server_name] or {}
+							server.capabilities =
+								vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+							vim.lsp.enable(server_name)
+						end,
 					})
 				end,
 			},

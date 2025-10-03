@@ -25,16 +25,6 @@ return {
 		opts = {
 			keymap = {
 				preset = "default",
-				-- ["<Tab>"] = { "snippet_forward", "fallback" },
-				-- ["<S-Tab>"] = { "snippet_backward", "fallback" },
-				["<S-Tab>"] = { "select_prev", "fallback" },
-				["<Tab>"] = { "select_next", "fallback" },
-				["<C-p>"] = { "select_prev", "fallback" },
-				["<C-n>"] = { "select_next", "fallback" },
-				["<S-k>"] = { "scroll_documentation_up", "fallback" },
-				["<S-j>"] = { "scroll_documentation_down", "fallback" },
-				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-				["<C-e>"] = { "hide", "fallback" },
 			},
 			appearance = {
 				nerd_font_variant = "mono",
@@ -77,6 +67,7 @@ return {
 					auto_show = true,
 				},
 			},
+			signature = { enabled = true },
 			sources = {
 				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 				providers = {
