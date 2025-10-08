@@ -1,5 +1,1 @@
-require("config.vim-opts")
-require("config.keymaps")
-require("config.lazy")
-require("config.colorscheme")
-require("config.autocommands")
+require('config.lazy')

@@ -1,31 +1,42 @@
 return {
 	{
-		"EdenEast/nightfox.nvim",
-		opts = function()
-			local nightfox = require("nightfox")
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		opts = {
+			transparent_background = false,
+			float = {
+				transparent = false,
+			},
+			auto_integrations = true,
+			styles = {
+				functions = { "italic" },
+			},
+		},
+		config = function(_, opts)
+			local catppuccin = require("catppuccin")
+			local is_transparent = false
+			opts.transparent_background = is_transparent
+			opts.float.transparent = is_transparent
 
-			local is_transparent = true
+			local setup = function()
+				catppuccin.setup(opts)
+				vim.cmd("colorscheme catppuccin")
+			end
+
+			setup()
 
 			local toggle_transparency = function()
 				is_transparent = not is_transparent
-				nightfox.setup({
-					options = {
-						transparent = is_transparent,
-					},
-				})
-				vim.cmd("colorscheme carbonfox")
+				opts.transparent_background = is_transparent
+				opts.float.transparent = is_transparent
+				setup()
 			end
-			nightfox.setup({
-				options = {
-					transparent = is_transparent,
-				},
-			})
 			vim.keymap.set(
 				"n",
 				"<leader>bg",
 				toggle_transparency,
-				{ desc = "Toggle background transparency" },
-				{ noremap = true, silent = true }
+				{ desc = "Toggle Background Transparency", silent = true, noremap = true }
 			)
 		end,
 	},
