@@ -4,7 +4,8 @@ return {
 		version = "*",
 		dependencies = {
 			{
-				"nvim-tree/nvim-web-devicons",
+				"nvim-mini/mini.icons",
+				opts = {},
 			},
 			{
 				"catppuccin/nvim",

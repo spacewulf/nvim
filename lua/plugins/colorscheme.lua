@@ -15,11 +15,11 @@ return {
 		},
 		config = function(_, opts)
 			local catppuccin = require("catppuccin")
-			local is_transparent = false
+			local is_transparent = true
 			opts.transparent_background = is_transparent
 			opts.float.transparent = is_transparent
 
-			local setup = function()
+			local function setup()
 				catppuccin.setup(opts)
 				vim.cmd("colorscheme catppuccin")
 			end

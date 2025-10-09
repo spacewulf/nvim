@@ -1,3 +1,4 @@
+-- stylua: ignore start
 local map = function(lhs, rhs, desc, mode)
 	mode = mode or "n"
 	vim.keymap.set(mode, lhs, rhs, { desc = desc, silent = true, noremap = true })
@@ -21,10 +22,6 @@ map("<C-j>", "<C-w><C-j>", "Move Splits Down")
 map("<C-k>", "<C-w><C-k>", "Move Splits Up")
 map("<C-l>", "<C-w><C-l>", "Move Splits Right")
 
--- New Splits
-map("<leader>o", "<cmd>vsplit<CR>", "Split Vertically")
-map("<leader>p", "<cmd>hsplit<CR>", "Split Horizontally")
-
 -- Resize with Arrows
 map("<Up>", "<CMD>resize -2<CR>", "Resize down")
 map("<Down>", "<CMD>resize -2<CR>", "Resize up")
@@ -38,8 +35,8 @@ map("<leader>x", "<CMD>bdelete!<CR>", "Close buffer") -- Close buffer
 map("<leader>b", "<cmd> enew <CR>", "New Buffer") -- New buffer
 
 -- Window Management
--- vim.keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" }, opts) -- Split window vertically
--- vim.keymap.set("n", "<leader>h", "<C-w>s", { desc = "Split window horizontally" }, opts) -- Split window horizontally
+map("<leader>o", "<cmd>vsplit<CR>", "Split Vertically")
+map("<leader>p", "<cmd>hsplit<CR>", "Split Horizontally")
 map("<leader>se", "<C-w>=", "Make Splits Equal") -- Make splits equal
 map("<leader>xs", "<CMD>close<CR>", "Close current split") -- Close current split
 
@@ -63,8 +60,8 @@ map("x", '"_x', "Delete current character without copying to register")
 map("p", '"_dP', "Keep last yanked when pasting", "v")
 
 -- Diagnostic Keymaps
-map("[d", vim.diagnostic.goto_prev, "Go to previous diagnostic")
-map("]d", vim.diagnostic.goto_next, "Go to next diagnostic")
+map("[d", function() vim.diagnostic.jump({ count = 1, float = true }) end, "Go to previous diagnostic")
+map("]d", function() vim.diagnostic.jump({ count = -1, float = true }) end, "Go to next diagnostic")
 map("<leader>df", vim.diagnostic.open_float, "Open diagnostic float")
 map("<leader>dq", vim.diagnostic.setloclist, "Diagnostic set location list")
 
@@ -85,3 +82,4 @@ vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 map("<C-Space>", function()
 	require("blink-cmp-avante")
 end, "Insert suggestion", "i")
+-- stylua: ignore end
