@@ -5,6 +5,7 @@ return {
 			ensure_installed = { "codelldb", "debugpy" },
 			handlers = {},
 		},
+		event = "VeryLazy",
 		dependencies = {
 			{
 				"mason-org/mason.nvim",

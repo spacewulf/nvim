@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  mason-conform.nvim 
  neo-tree.nvim 
  nightfox.nvim 
@@ -9,3 +10,10 @@
  plenary.nvim 
  telescope.nvim 
  tiny-inline-diagnostic.nvim 
+=======
+# Neovim Configuration
+
+- LSP
+- Formatter
+- Autocomplete
+>>>>>>> a514458de4bf7b8308b776c3024e6ec2cf9066a3

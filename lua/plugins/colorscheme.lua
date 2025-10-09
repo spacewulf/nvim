@@ -25,12 +25,15 @@ return {
 			end
 
 			setup()
+			catppuccin.setup(opts)
+			vim.cmd("colorscheme catppuccin")
 
 			local toggle_transparency = function()
 				is_transparent = not is_transparent
 				opts.transparent_background = is_transparent
 				opts.float.transparent = is_transparent
-				setup()
+				catppuccin.setup(opts)
+				vim.cmd("colorscheme catppuccin")
 			end
 			vim.keymap.set(
 				"n",
