@@ -39,6 +39,7 @@ end
 
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
 
+
 -- stylua: ignore start
 vim.keymap.set("n", "<leader>tt", toggle_terminal, { desc = "Open floating window", silent = true, noremap = true })
 vim.keymap.set( "t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit insert mode in terminal", silent = true, noremap = true })

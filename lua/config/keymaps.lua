@@ -9,6 +9,7 @@ map("gl", function()
 end, "Open Diagnostics in Float")
 
 map("jk", "<Esc>", "Exit Insert Mode", "i")
+map("<leader><leader>x", "<cmd>source %<CR>", "Source current file")
 
 -- Write and Quit
 map("<leader>q", "<cmd>q<CR>", "Quit")
