@@ -4,7 +4,7 @@ return {
 	---@type oil.SetupOpts
 	opts = {
 		view_options = {
-			show_hidden = false,
+			show_hidden = true,
 		},
 	},
 	dependencies = { "nvim-mini/mini.icons" },
@@ -12,11 +12,11 @@ return {
 	config = function(_, opts)
 		local oil = require("oil")
 		oil.setup(opts)
-		local is_hidden = false
+		local show_hidden = true
 
 		local function toggle_hidden()
-			is_hidden = not is_hidden
-			opts.view_options.show_hidden = is_hidden
+			show_hidden = not show_hidden
+			opts.view_options.show_hidden = show_hidden
 			oil.setup(opts)
 		end
 

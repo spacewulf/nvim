@@ -15,27 +15,44 @@ return {
 				"c",
 				"markdown",
 			})
-			-- local configs = require("nvim-treesitter.configs")
-
-			-- configs.setup({
-			-- 	ensure_installed = { "c", "query", "markdown", "lua", "vim", "vimdoc", "html", "python", "rust" },
-			--
-			-- 	sync_install = false,
-			--
-			-- 	highlight = { enable = true },
-			--
-			-- 	indent = { enable = true },
-			--
-			-- 	incremental_selection = {
-			-- 		enable = true,
-			-- 		keymaps = {
-			-- 			init_selection = "<Enter>", -- set to false to disable
-			-- 			node_incremental = "<Enter>",
-			-- 			scope_incremental = "false",
-			-- 			node_decremental = "<Backspace>",
-			-- 		},
-			-- 	},
-			-- })
 		end,
+	},
+	{
+		"MeanderingProgrammer/treesitter-modules.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		---@module 'treesitter-modules'
+		---@type ts.mod.UserConfig
+		opts = {
+			sync_install = false,
+			auto_install = true,
+			incremental_selection = {
+				enable = true,
+				disable = false,
+				keymaps = {
+					init_selection = "<Enter>",
+					node_incremental = "<Enter>",
+					scope_incremental = "false",
+					node_decremental = "<Backspace>",
+				},
+			},
+			indent = {
+				enable = true,
+				disable = false,
+			},
+		},
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		opts = {
+			select = {
+				lookahead = true,
+				selection_modes = {
+					["@parameter.outer"] = "v", -- charwise
+					["@function.outer"] = "V", -- linewise
+					["@class.outer"] = "<c-v>", -- blockwise
+				},
+			},
+		},
+		branch = "main",
 	},
 }

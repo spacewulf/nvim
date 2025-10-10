@@ -18,10 +18,10 @@ map("<leader>w", "<cmd>w<CR>", "Write")
 map("<leader>wq", "<cmd>wq<CR>", "Write and Quit")
 
 -- Split Navigation
-map("<C-h>", "<C-w><C-h>", "Move Splits Left")
-map("<C-j>", "<C-w><C-j>", "Move Splits Down")
-map("<C-k>", "<C-w><C-k>", "Move Splits Up")
-map("<C-l>", "<C-w><C-l>", "Move Splits Right")
+-- map("<C-h>", "<C-w><C-h>", "Move Splits Left")
+-- map("<C-j>", "<C-w><C-j>", "Move Splits Down")
+-- map("<C-k>", "<C-w><C-k>", "Move Splits Up")
+-- map("<C-l>", "<C-w><C-l>", "Move Splits Right")
 
 -- Resize with Arrows
 map("<Up>", "<CMD>resize -2<CR>", "Resize down")
@@ -79,6 +79,12 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
+
+-- stylua: ignore start
+vim.keymap.set("n", "<leader>tt", "<cmd>Floaterminal<CR>", { desc = "Open floating window", silent = true, noremap = true })
+vim.keymap.set( "t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit insert mode in terminal", silent = true, noremap = true })
+-- stylua: ignore end
 
 map("<C-Space>", function()
 	require("blink-cmp-avante")
