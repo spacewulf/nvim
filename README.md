@@ -1,12 +1,15 @@
 # Neovim Configuration
- mason-conform.nvim 
- neo-tree.nvim 
- nightfox.nvim 
- nvim-lsp-file-operations 
- nvim-notify 
- nvim-surround 
- nvim-treesitter-textobjects 
- nvim-window-picker 
- plenary.nvim 
- telescope.nvim 
- tiny-inline-diagnostic.nvim 
+
+## Plugins
+
+mason-conform.nvim
+neo-tree.nvim
+nightfox.nvim
+nvim-lsp-file-operations
+nvim-notify
+nvim-surround
+nvim-treesitter-textobjects
+nvim-window-picker
+plenary.nvim
+telescope.nvim
+tiny-inline-diagnostic.nvim
