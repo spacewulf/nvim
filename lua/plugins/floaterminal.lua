@@ -1,8 +1,10 @@
 return {
 	{
-		"spacewulf/floaterminal.nvim",
-		config = function()
-			require("floaterminal")
-		end,
+		dir = "~/plugins/floaterminal.nvim",
+		-- "spacewulf/floaterminal.nvim",
+		opts = {},
+		-- config = function()
+		-- 	require("floaterminal")
+		-- end,
 	},
 }

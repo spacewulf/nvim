@@ -24,5 +24,26 @@ return {
 		-- Keymaps
 		vim.keymap.set( "n", "<leader>oth", toggle_hidden, { desc = "Toggle hidden files in Oil", silent = true, noremap = true })
 		vim.keymap.set("n", "-", "<cmd>Oil --float<CR>", { desc = "Open Oil in Float", silent = true, noremap = true })
+		vim.keymap.set("n", "q", function()
+			local buf_name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+			local win_id = vim.api.nvim_get_current_win()
+
+			---@param window_id integer
+			---@return boolean
+			local is_float = function(window_id)
+				if vim.api.nvim_win_get_config(window_id).relative ~= "" then
+					return true
+				end
+				return false
+			end
+
+			if buf_name:match("oil") and is_float(win_id) then
+				vim.api.nvim_win_close(win_id, true)
+			end
+		end, {
+			desc = "Close floating oil with 'q', but do nothing with oil inside normal window.",
+			silent = true,
+			noremap = true,
+		})
 	end,
 }
