@@ -60,6 +60,8 @@ map("x", '"_x', "Delete current character without copying to register")
 -- Keep Last yanked when pasting
 map("p", '"_dP', "Keep last yanked when pasting", "v")
 
+map("<leader>p", "\"_dP", "Best remap ever", "x")
+
 -- Diagnostic Keymaps
 map("[d", function() vim.diagnostic.jump({ count = 1, float = true }) end, "Go to previous diagnostic")
 map("]d", function() vim.diagnostic.jump({ count = -1, float = true }) end, "Go to next diagnostic")
