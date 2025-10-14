@@ -1,14 +1,13 @@
 return {
 	{
-		dir = "~/plugins/present.nvim",
+		"spacewulf/floaterminal.nvim",
 		config = function()
-			require("present")
+			require("floaterminal")
 		end,
 	},
-	-- {
-	-- 	"spacewulf/floaterminal.nvim",
-	-- 	config = function()
-	-- 		require("floaterminal")
-	-- 	end,
-	-- },
+	{
+		"spacewulf/oil-addon.nvim",
+		opts = {},
+		dependencies = { "stevearc/oil.nvim" },
+	},
 }
