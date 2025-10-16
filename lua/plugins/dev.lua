@@ -1,12 +1,12 @@
 return {
 	{
-		dir = "~/plugins/present.nvim",
+		"spacewulf/floaterminal.nvim",
 		config = function()
-			require("present")
+			require("floaterminal")
 		end,
 	},
 	{
-		dir = "~/plugins/oil-addon.nvim",
+		"spacewulf/oil-addon.nvim",
 		opts = {
 			keys = {
 				close_floating = "<Esc>",
@@ -19,10 +19,4 @@ return {
 			"stevearc/oil.nvim",
 		},
 	},
-	-- {
-	-- 	"spacewulf/floaterminal.nvim",
-	-- 	config = function()
-	-- 		require("floaterminal")
-	-- 	end,
-	-- },
 }
