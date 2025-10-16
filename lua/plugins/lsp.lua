@@ -24,44 +24,26 @@ return {
 
 					map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
 
-					map("grr", function()
-						Snacks.picker.lsp_references()
-					end, "[G]oto [R]eferences")
+					map("grr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
-					map("gri", function()
-						Snacks.picker.lsp_implementations()
-					end, "[G]oto [I]mplementation")
+					map("gri", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 
-					map("grd", function()
-						Snacks.picker.lsp_definitions()
-					end, "[G]oto [D]efinition")
+					map("grd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
-					map("grD", function()
-						Snacks.picker.lsp_declarations()
-					end, "[G]oto [D]eclaration")
+					map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-					map("gO", function()
-						Snacks.picker.lsp_symbols()
-					end, "Open Document Symbols")
+					map("gO", require("telescope.builtin").lsp_document_symbols, "Open Document Symbols")
 
-					map("gW", function()
-						Snacks.picker.lsp_workspace_symbols()
-					end, "Open Workspace Symbols")
+					map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Open Workspace Symbols")
 
-					map("grt", function()
-						Snacks.picker.lsp_type_definitions()
-					end, "[G]oto [T]ype Definition")
+					map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
 
 					---@param client vim.lsp.Client
 					---@param method vim.lsp.protocol.Method
 					---@param bufnr? integer some lsp support methods only in specific files
 					---@return boolean
 					local function client_supports_method(client, method, bufnr)
-						if vim.fn.has("nvim-0.11") == 1 then
-							return client:supports_method(method, bufnr)
-						else
-							return client.supports_method(method, { bufnr = bufnr })
-						end
+						return client:supports_method(method, bufnr)
 					end
 
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -135,8 +117,27 @@ return {
 
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-			local servers = {
+			local install_servers = {
 				pyright = {},
+				pylyzer = {},
+				rust_analyzer = {},
+				lua_ls = {
+					settings = {
+						Lua = {
+							completion = {
+								callSnippet = "Replace",
+							},
+						},
+					},
+				},
+			}
+			local setup_servers = {
+				nushell = {
+					cmd = { "nu", "--lsp" },
+					filetypes = { "nu" },
+				},
+				pyright = {},
+				pylyzer = {},
 				rust_analyzer = {},
 				lua_ls = {
 					settings = {
@@ -149,7 +150,7 @@ return {
 				},
 			}
 
-			local ensure_installed = vim.tbl_keys(servers or {})
+			local ensure_installed = vim.tbl_keys(install_servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 			})
@@ -162,7 +163,7 @@ return {
 				automatic_installation = false,
 				handlers = {
 					function(server_name)
-						local server = servers[server_name] or {}
+						local server = setup_servers[server_name] or {}
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
 					end,

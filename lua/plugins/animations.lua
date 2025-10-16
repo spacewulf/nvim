@@ -14,9 +14,11 @@ return {
 				"zb",
 			},
 		},
+		enabled = false,
 	},
 	{
 		"gen740/SmoothCursor.nvim",
 		opts = {},
+		enabled = false,
 	},
 }
