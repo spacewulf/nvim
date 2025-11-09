@@ -22,7 +22,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				rust = { "ast-grep" },
+				rust = { "rustfmt" },
 				bash = { "shellharden" },
 				yaml = { "yamlfmt" },
 				toml = { "tombi" },

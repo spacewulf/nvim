@@ -117,27 +117,9 @@ return {
 
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-			local install_servers = {
-				pyright = {},
-				pylyzer = {},
-				rust_analyzer = {},
-				lua_ls = {
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				},
-			}
-			local setup_servers = {
-				nushell = {
-					cmd = { "nu", "--lsp" },
-					filetypes = { "nu" },
-				},
-				pyright = {},
-				pylyzer = {},
+			local servers = {
+				basedpyright = {},
+				-- pylyzer = {},
 				rust_analyzer = {},
 				lua_ls = {
 					settings = {
@@ -150,25 +132,45 @@ return {
 				},
 			}
 
-			local ensure_installed = vim.tbl_keys(install_servers or {})
+			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"pylint", -- Used for python linting
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-			vim.lsp.enable("nushell")
 
 			require("mason-lspconfig").setup({
 				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
 				automatic_installation = false,
 				handlers = {
 					function(server_name)
-						local server = setup_servers[server_name] or {}
+						local server = servers[server_name] or {}
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
 					end,
 				},
 			})
+		end,
+	},
+	{
+		"mfussenegger/nvim-lint",
+		dependencies = {
+			"mason-org/mason.nvim",
+		},
+		config = function()
+			require("lint").linters_by_ft = {
+				python = { "pylint" },
+				-- rust = { "bacon" },
+			}
+		end,
+	},
+	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy",
+		priority = 1000,
+		config = function()
+			require("tiny-inline-diagnostic").setup()
+			vim.diagnostic.config({ virtual_text = false })
 		end,
 	},
 }

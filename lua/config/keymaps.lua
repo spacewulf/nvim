@@ -9,19 +9,16 @@ map("gl", function()
 end, "Open Diagnostics in Float")
 
 map("jk", "<Esc>", "Exit Insert Mode", "i")
+map("<Esc>", "<cmd>noh<CR>", "general clear highlights")
 map("<leader><leader>x", "<cmd>source %<CR>", "Source current file")
+map("<leader>o", "o<Esc>", "Insert linebreak after cursor and stay in normal mode")
+map("<leader>O", "O<Esc>", "Insert linebreak before cursor and stay in normal mode")
 
 -- Write and Quit
 map("<leader>q", "<cmd>q<CR>", "Quit")
 map("<C-q><C-q>", "<CMD>q!<CR>", "Force quit")
 map("<leader>w", "<cmd>w<CR>", "Write")
 map("<leader>wq", "<cmd>wq<CR>", "Write and Quit")
-
--- Split Navigation
--- map("<C-h>", "<C-w><C-h>", "Move Splits Left")
--- map("<C-j>", "<C-w><C-j>", "Move Splits Down")
--- map("<C-k>", "<C-w><C-k>", "Move Splits Up")
--- map("<C-l>", "<C-w><C-l>", "Move Splits Right")
 
 -- Resize with Arrows
 map("<Up>", "<CMD>resize -2<CR>", "Resize down")
@@ -36,8 +33,6 @@ map("<leader>x", "<CMD>bdelete!<CR>", "Close buffer") -- Close buffer
 map("<leader>b", "<cmd> enew <CR>", "New Buffer") -- New buffer
 
 -- Window Management
-map("<leader>o", "<cmd>vsplit<CR>", "Split Vertically")
-map("<leader>p", "<cmd>hsplit<CR>", "Split Horizontally")
 map("<leader>se", "<C-w>=", "Make Splits Equal") -- Make splits equal
 map("<leader>xs", "<CMD>close<CR>", "Close current split") -- Close current split
 
@@ -81,14 +76,3 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
-
-
--- stylua: ignore start
-vim.keymap.set("n", "<leader>tt", "<cmd>Floaterminal<CR>", { desc = "Open floating window", silent = true, noremap = true })
-vim.keymap.set( "t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit insert mode in terminal", silent = true, noremap = true })
--- stylua: ignore end
-
-map("<C-Space>", function()
-	require("blink-cmp-avante")
-end, "Insert suggestion", "i")
--- stylua: ignore end

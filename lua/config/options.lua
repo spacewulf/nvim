@@ -1,54 +1,57 @@
-vim.diagnostic.config({
-	virtual_text = false,
-})
+local opt = vim.opt
+-- vim.diagnostic.config({
+-- 	virtual_text = false,
+-- 	virtual_lines = true,
+-- })
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.have_nerd_font = true
 
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.smarttab = true
-vim.opt.smartindent = true
-vim.opt.autoindent = true
-vim.opt.cursorline = true
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.encoding = "UTF-8"
-vim.opt.ruler = true
-vim.opt.title = true
-vim.opt.termguicolors = true
-vim.opt.hidden = false
-vim.opt.confirm = true
-vim.opt.winborder = "rounded"
+opt.number = true
+opt.relativenumber = true
+opt.smarttab = true
+opt.smartindent = true
+opt.autoindent = true
+opt.cursorline = true
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.encoding = "UTF-8"
+opt.ruler = true
+opt.title = true
+opt.termguicolors = true
+opt.hidden = false
+opt.confirm = true
+opt.winborder = "rounded"
+opt.whichwrap:append "<>[]hl"
 
-vim.opt.breakindent = true
+opt.breakindent = true
 
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+opt.splitright = true
+opt.splitbelow = true
 
-vim.opt.timeoutlen = 300
+opt.timeoutlen = 300
 
-vim.opt.undofile = true
+opt.undofile = true
 
-vim.opt.scrolloff = 10
+opt.scrolloff = 10
 
 vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
+	opt.clipboard = "unnamedplus"
 end)
 
 -- Preview substitutions live, as you type!
-vim.o.inccommand = "split"
+opt.inccommand = "split"
 
 -- See how neovim will display certian whitespace characters in the editor
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
-vim.opt.showmode = false
+opt.showmode = false
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
-vim.opt.signcolumn = "yes"
+opt.signcolumn = "yes"

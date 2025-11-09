@@ -4,6 +4,7 @@ return {
 		event = "VimEnter",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"ThePrimeagen/harpoon",
 			{ -- If encountering errors, see telescope-fzf-native README for installation instructions
 				"nvim-telescope/telescope-fzf-native.nvim",
 
@@ -34,19 +35,26 @@ return {
 			-- Enable Telescope extensions if they are installed
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
+			pcall(require("telescope").load_extension, "harpoon")
 
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
-			vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[F]ind [K]eymaps" })
-			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[F]ind [F]iles" })
-			vim.keymap.set("n", "<leader>fs", builtin.builtin, { desc = "[F]ind [S]elect Telescope" })
-			vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "[F]ind current [W]ord" })
-			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind by [G]rep" })
-			vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
-			vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind [R]esume" })
-			vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
-			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+			local map = function(lhs, rhs, desc, mode)
+				mode = mode or "n"
+				vim.keymap.set(mode, lhs, rhs, { desc = desc, silent = true, noremap = false })
+			end
+
+			map("<leader>sh", builtin.help_tags, "[S]earch [H]elp")
+			map("<leader>sk", builtin.keymaps, "[S]earch [K]eymaps")
+			map("<leader>sf", builtin.find_files, "[S]earch [F]iles")
+			map("<leader>ss", builtin.builtin, "[S]earch [S]elect Telescope")
+			map("<leader>sw", builtin.grep_string, "[S]earch current [W]ord")
+			map("<leader>sg", builtin.git_files, "[S]earch in [G]it")
+			map("<leader>sl", builtin.live_grep, "[S]earch by [L]ive Grep")
+			map("<leader>sd", builtin.diagnostics, "[S]earch [D]iagnostics")
+			map("<leader>sr", builtin.resume, "[S]earch [R]esume")
+			map("<leader>s.", builtin.oldfiles, '[S]earc"_yiw Recent Files ("." for repeat)')
+			map("<leader><leader>", builtin.buffers, "[ ] Find existing buffers")
 
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set("n", "<leader>/", function()
