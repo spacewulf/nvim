@@ -2,6 +2,7 @@ return {
 	{ -- Fuzzy Finder (files, lsp, etc)
 		"nvim-telescope/telescope.nvim",
 		event = "VimEnter",
+		enabled = false,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"ThePrimeagen/harpoon",

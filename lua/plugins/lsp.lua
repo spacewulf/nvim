@@ -16,27 +16,29 @@ return {
 				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 				callback = function(event)
 					local map = function(keys, func, desc, mode)
-						mode = mode or "n"
+						mode = mode or { "n" }
 						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
 
-					map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+					-- stylua: ignore start
+					map("grn", function() vim.lsp.buf.rename() end, "[R]e[n]ame")
 
-					map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+					map("gra", require("fzf-lua").lsp_code_actions, "[G]oto Code [A]ction", { "n", "x" })
 
-					map("grr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+					map("grr", require("fzf-lua").lsp_references, "[G]oto [R]eferences")
 
-					map("gri", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+					map("gri", require("fzf-lua").lsp_implementations, "[G]oto [I]mplementation")
 
-					map("grd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+					map("grd", require("fzf-lua").lsp_definitions, "[G]oto [D]efinition")
 
-					map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+					map("grD", require("fzf-lua").lsp_declarations, "[G]oto [D]eclaration")
 
-					map("gO", require("telescope.builtin").lsp_document_symbols, "Open Document Symbols")
+					map("gO", require("fzf-lua").lsp_document_symbols, "Open Document Symbols")
 
-					map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Open Workspace Symbols")
+					map("gW", require("fzf-lua").lsp_live_workspace_symbols, "Open Workspace Symbols")
 
-					map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
+					map("grt", require("fzf-lua").lsp_typedefs, "[G]oto [T]ype Definition")
+					-- stylua: ignore end
 
 					---@param client vim.lsp.Client
 					---@param method vim.lsp.protocol.Method
@@ -118,7 +120,8 @@ return {
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			local servers = {
-				basedpyright = {},
+				-- basedpyright = {},
+				pyright = {},
 				-- pylyzer = {},
 				rust_analyzer = {},
 				lua_ls = {

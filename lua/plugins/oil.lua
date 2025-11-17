@@ -7,7 +7,7 @@ return {
 			show_hidden = false,
 		},
 	},
-	dependencies = { "nvim-mini/mini.icons" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	lazy = false,
 	config = function(_, opts)
 		local oil = require("oil")
